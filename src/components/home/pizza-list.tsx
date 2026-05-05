@@ -1,3 +1,4 @@
+"use client"
 import { Product } from "@/generated/prisma/client"
 import { PizzaItem } from "./pizza-item"
 import { useProducts } from "@/stores/products"

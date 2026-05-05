@@ -3,6 +3,7 @@ import { Product } from "@/generated/prisma/client"
 import Image from "next/image"
 import { Button } from "../ui/button"
 import { decimalToMoney } from "@/lib/utils"
+import { useCart } from "@/stores/cart"
 
 type Props = {
     data: Product
@@ -10,8 +11,15 @@ type Props = {
 
 export const PizzaItem = ({ data }: Props) => {
 
-    const handlleAddToCart = ()=>{
+    const cart = useCart()
 
+    const handlleAddToCart = ()=>{
+        cart.addItem({
+            productId: data.id,
+            quantity: 1
+        })
+
+        cart.setOpen(true)
     }
     return (
         <div className="text-sm bg-secondary p-4 rounded-md">
